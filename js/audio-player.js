@@ -65,7 +65,7 @@ class RetroAudioPlayer {
     const albumCover = document.querySelector('.player-album-cover');
     if (albumCover) {
       albumCover.style.cursor = 'pointer';
-      albumCover.setAttribute('title', 'Кликните для воспроизведения / паузы');
+      albumCover.setAttribute('title', 'Click to Play / Pause');
       albumCover.addEventListener('click', () => {
         this.togglePlay();
       });
@@ -176,11 +176,11 @@ class RetroAudioPlayer {
     if (playing) {
       this.playBtn.innerHTML = '❚❚';
       this.playBtn.classList.add('playing');
-      this.playBtn.setAttribute('aria-label', 'Пауза');
+      this.playBtn.setAttribute('aria-label', 'Pause');
     } else {
       this.playBtn.innerHTML = '▶';
       this.playBtn.classList.remove('playing');
-      this.playBtn.setAttribute('aria-label', 'Воспроизвести');
+      this.playBtn.setAttribute('aria-label', 'Play');
     }
   }
 
@@ -237,7 +237,7 @@ class RetroAudioPlayer {
       if (this.seekTrack) {
         const pct = Math.min(100, Math.max(0, Math.round((cur / dur) * 100)));
         this.seekTrack.setAttribute('aria-valuenow', pct.toString());
-        this.seekTrack.setAttribute('aria-valuetext', `${this.formatTime(cur)} из ${this.formatTime(dur)}`);
+        this.seekTrack.setAttribute('aria-valuetext', `${this.formatTime(cur)} / ${this.formatTime(dur)}`);
       }
     }
   }

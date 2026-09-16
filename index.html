@@ -50,10 +50,10 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect width=%2216%22 height=%2216%22 fill=%22%232563eb%22/><rect x=%223%22 y=%222%22 width=%2210%22 height=%226%22 fill=%22white%22/><rect x=%229%22 y=%223%22 width=%222%22 height=%224%22 fill=%22black%22/><rect x=%223%22 y=%2210%22 width=%2210%22 height=%225%22 fill=%22white%22/></svg>">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/crt-effects.css">
-  <link rel="stylesheet" href="css/retro-components.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/main.css?v=1.4">
+  <link rel="stylesheet" href="css/crt-effects.css?v=1.4">
+  <link rel="stylesheet" href="css/retro-components.css?v=1.4">
+  <link rel="stylesheet" href="css/responsive.css?v=1.4">
 </head>
 <body class="theme-atari">
 
@@ -85,7 +85,7 @@
     <header class="system-taskbar">
       
       <!-- Brand & Status (Secret trigger for popups) -->
-      <div class="taskbar-brand" role="button" tabindex="0" aria-label="Открыть системное окно">
+      <div class="taskbar-brand" role="button" tabindex="0" aria-label="System Menu">
         <span class="taskbar-title font-pixel">ANHELM</span>
         <div class="taskbar-status-tag">
           <span class="status-dot"></span>
@@ -96,7 +96,7 @@
       <!-- Retro Pixel Icon Navigation -->
       <nav class="taskbar-nav">
         <!-- Profile / User Icon -->
-        <a href="#profile" class="nav-icon-btn" aria-label="Профиль">
+        <a href="#profile" class="nav-icon-btn" aria-label="Profile">
           <svg viewBox="0 0 16 16">
             <rect x="6" y="2" width="4" height="4"/>
             <rect x="3" y="8" width="10" height="6"/>
@@ -104,7 +104,7 @@
         </a>
 
         <!-- Audio / Boombox Icon -->
-        <a href="#player" class="nav-icon-btn" aria-label="Аудио">
+        <a href="#player" class="nav-icon-btn" aria-label="Audio">
           <svg viewBox="0 0 16 16">
             <rect x="2" y="3" width="12" height="10" fill="none" stroke="currentColor" stroke-width="2"/>
             <circle cx="5.5" cy="8" r="1.5"/>
@@ -113,14 +113,14 @@
         </a>
 
         <!-- Projects / Folder Icon -->
-        <a href="#projects" class="nav-icon-btn" aria-label="Проекты">
+        <a href="#projects" class="nav-icon-btn" aria-label="Projects">
           <svg viewBox="0 0 16 16">
             <polygon points="1,3 6,3 8,5 15,5 15,13 1,13"/>
           </svg>
         </a>
 
         <!-- Contacts / Network Antenna Icon -->
-        <a href="#contacts" class="nav-icon-btn" aria-label="Контакты">
+        <a href="#contacts" class="nav-icon-btn" aria-label="Contacts">
           <svg viewBox="0 0 16 16">
             <rect x="7" y="5" width="2" height="9"/>
             <circle cx="8" cy="3.5" r="2.5"/>
@@ -131,7 +131,7 @@
 
       <!-- Taskbar Controls: Themes Dropdown & CRT Toggle -->
       <div class="taskbar-actions">
-        <select id="theme-selector" class="retro-dropdown" aria-label="Выбор темы оформления">
+        <select id="theme-selector" class="retro-dropdown" aria-label="Select Theme">
           <option value="theme-atari" selected>Atari VCS</option>
           <option value="theme-obsidian">Obsidian Purple</option>
           <option value="theme-green-crt">P1 Green CRT</option>
@@ -152,7 +152,6 @@
          2. HERO WINDOW: ANHELM PROFILE (GANGSTA TOM ART)
          ======================================================== -->
     <section id="profile" class="retro-window">
-      <h2 class="sr-only">Профиль и ключевые направления</h2>
       <div class="window-titlebar">
         <div class="window-title-group">
           <!-- Pixel Floppy Disk Icon -->
@@ -167,9 +166,9 @@
           <span class="window-title-text">ANHELM_PROFILE.EXE // CREATIVE_DIR</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn min" aria-label="Свернуть">_</button>
-          <button class="win-btn max" aria-label="Развернуть">□</button>
-          <button class="win-btn close" aria-label="Закрыть">✕</button>
+          <button class="win-btn min" aria-label="Minimize">_</button>
+          <button class="win-btn max" aria-label="Maximize">□</button>
+          <button class="win-btn close" aria-label="Close">✕</button>
         </div>
       </div>
 
@@ -187,7 +186,7 @@
           <!-- Left Column: Gangsta Tom Avatar Frame -->
           <div class="hero-avatar-wrapper">
             <div class="hero-avatar-img-box">
-              <img src="assets/images/hero-avatar.jpg" alt="Кот Том в солнцезащитных очках разговаривает по кнопочному телефону" width="340" height="340" fetchpriority="high">
+              <img src="assets/images/hero-avatar.jpg" alt="Tom the cat in sunglasses on phone" width="340" height="340" fetchpriority="high">
             </div>
             <div class="hero-avatar-bar">
               <span class="text-muted">OPERATOR // @ANHELM</span>
@@ -241,7 +240,6 @@
          3. RETRO AUDIO PLAYER (MC REN - I DON'T GIVE A DAMN)
          ======================================================== -->
     <section id="player" class="retro-window">
-      <h2 class="sr-only">Ретро аудиоплеер Winamp</h2>
       <div class="window-titlebar">
         <div class="window-title-group">
           <!-- Pixel Speaker / Cassette Icon -->
@@ -254,9 +252,9 @@
           <span class="window-title-text">WINAMP_MINI.EXE // RUTHLESS_AUDIO_DECK</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn min" aria-label="Свернуть">_</button>
-          <button class="win-btn max" aria-label="Развернуть">□</button>
-          <button class="win-btn close" aria-label="Закрыть">✕</button>
+          <button class="win-btn min" aria-label="Minimize">_</button>
+          <button class="win-btn max" aria-label="Maximize">□</button>
+          <button class="win-btn close" aria-label="Close">✕</button>
         </div>
       </div>
 
@@ -265,7 +263,7 @@
           
           <!-- Album Cover: Iced Out Diamond Emoji -->
           <div class="player-album-cover">
-            <img src="assets/images/iced-emoji.jpg" alt="Золотой эмодзи в кепке и часах Rolex" width="160" height="160" loading="lazy" decoding="async">
+            <img src="assets/images/iced-emoji.jpg" alt="Diamond iced emoji in cap and watch" width="160" height="160" loading="lazy" decoding="async">
             <div class="player-album-badge font-pixel">MC REN // 1993</div>
           </div>
 
@@ -310,9 +308,9 @@
             <!-- Player Controls & Timeline -->
             <div class="player-controls-row">
               <div class="playback-btns">
-                <button id="player-prev-btn" class="ctrl-btn" aria-label="С начала">⏮</button>
-                <button id="player-play-btn" class="ctrl-btn play" aria-label="Воспроизвести">▶</button>
-                <button id="player-next-btn" class="ctrl-btn" aria-label="Вперед на 15 секунд">⏭</button>
+                <button id="player-prev-btn" class="ctrl-btn" aria-label="Previous">⏮</button>
+                <button id="player-play-btn" class="ctrl-btn play" aria-label="Play">▶</button>
+                <button id="player-next-btn" class="ctrl-btn" aria-label="Next">⏭</button>
               </div>
 
               <div class="player-timeline-wrapper">
@@ -320,14 +318,14 @@
                   <span id="player-time-current">0:00</span>
                   <span id="player-time-duration">--:--</span>
                 </div>
-                <div id="player-seek-track" class="seek-bar-track" role="slider" tabindex="0" aria-label="Позиция трека" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div id="player-seek-track" class="seek-bar-track" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                   <div id="player-seek-fill" class="seek-bar-fill"></div>
                 </div>
               </div>
 
               <div class="volume-control">
                 <span>VOL</span>
-                <input id="player-volume-slider" type="range" min="0" max="1" step="0.05" value="0.8" class="volume-slider" aria-label="Громкость">
+                <input id="player-volume-slider" type="range" min="0" max="1" step="0.05" value="0.8" class="volume-slider" aria-label="Volume">
               </div>
             </div>
 
@@ -341,7 +339,6 @@
          4. PORTFOLIO SHOWCASE (2x2 GRID)
          ======================================================== -->
     <section id="projects" class="retro-window">
-      <h2 class="sr-only">Избранные проекты и портфолио</h2>
       <div class="window-titlebar">
         <div class="window-title-group">
           <!-- Pixel Folder Icon -->
@@ -353,13 +350,13 @@
           <span class="window-title-text">SHOWCASE_PORTFOLIO.DIR // SELECTED_WORKS</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn min" aria-label="Свернуть">_</button>
-          <button class="win-btn max" aria-label="Развернуть">□</button>
-          <button class="win-btn close" aria-label="Закрыть">✕</button>
+          <button class="win-btn min" aria-label="Minimize">_</button>
+          <button class="win-btn max" aria-label="Maximize">□</button>
+          <button class="win-btn close" aria-label="Close">✕</button>
         </div>
       </div>
 
-      <div class="window-menubar project-filter-bar" role="tablist" aria-label="Фильтры проектов">
+      <div class="window-menubar project-filter-bar" role="tablist" aria-label="Project Filters">
         <button class="filter-btn active" data-filter="all">Filter: [ALL]</button>
         <button class="filter-btn" data-filter="video">[VIDEO EDIT]</button>
         <button class="filter-btn" data-filter="content">[CONTENT]</button>
@@ -373,7 +370,7 @@
           <!-- Card 1: Squidward Org XIII (Video Editing) -->
           <article class="project-card" data-category="video">
             <div class="project-card-thumb">
-              <img src="assets/images/squidward.jpg" alt="Сквидвард в ретро-очках и темном капюшоне" width="480" height="270" loading="lazy" decoding="async">
+              <img src="assets/images/squidward.jpg" alt="Squidward in retro sunglasses and dark coat" width="480" height="270" loading="lazy" decoding="async">
               <span class="project-status-badge">4K // 60 FPS</span>
             </div>
             <div class="project-card-body">
@@ -393,7 +390,7 @@
           <!-- Card 2: Knight with Dobriy juice (Content Management) -->
           <article class="project-card" data-category="content">
             <div class="project-card-thumb">
-              <img src="assets/images/knight.jpg" alt="Рыцарь в шлеме и доспехах пьет сок Добрый" width="480" height="270" loading="lazy" decoding="async">
+              <img src="assets/images/knight.jpg" alt="Knight in armor drinking Dobry juice" width="480" height="270" loading="lazy" decoding="async">
               <span class="project-status-badge wip">ACTIVE // SCALE</span>
             </div>
             <div class="project-card-body">
@@ -413,7 +410,7 @@
           <!-- Card 3: King's Field RPG Skeleton (Python Automation) -->
           <article class="project-card" data-category="python">
             <div class="project-card-thumb">
-              <img src="assets/images/retro-skeleton.jpg" alt="Пиксельный 3D скелет из ретро RPG King's Field с мечом" width="480" height="270" loading="lazy" decoding="async">
+              <img src="assets/images/retro-skeleton.jpg" alt="Pixel 3D skeleton from King's Field with sword" width="480" height="270" loading="lazy" decoding="async">
               <span class="project-status-badge">STABLE // v2.0</span>
             </div>
             <div class="project-card-body">
@@ -433,7 +430,7 @@
           <!-- Card 4: Pink Panther Arrested (Visual Identity & Branding) -->
           <article class="project-card" data-category="design">
             <div class="project-card-thumb">
-              <img src="assets/images/pink-panther.jpg" alt="Розовая Пантера в наручниках на допросе" width="480" height="270" loading="lazy" decoding="async">
+              <img src="assets/images/pink-panther.jpg" alt="Pink Panther in handcuffs at interrogation" width="480" height="270" loading="lazy" decoding="async">
               <span class="project-status-badge">FEATURED // 2026</span>
             </div>
             <div class="project-card-body">
@@ -458,7 +455,6 @@
          5. CONTACTS & TERMINAL COMMS
          ======================================================== -->
     <section id="contacts" class="retro-window">
-      <h2 class="sr-only">Контакты и каналы связи</h2>
       <div class="window-titlebar">
         <div class="window-title-group">
           <!-- Pixel Antenna / Satellite Icon -->
@@ -472,9 +468,9 @@
           <span class="window-title-text">SOCKET_CONNECT.SYS // GET_IN_TOUCH</span>
         </div>
         <div class="window-controls">
-          <button class="win-btn min" aria-label="Свернуть">_</button>
-          <button class="win-btn max" aria-label="Развернуть">□</button>
-          <button class="win-btn close" aria-label="Закрыть">✕</button>
+          <button class="win-btn min" aria-label="Minimize">_</button>
+          <button class="win-btn max" aria-label="Maximize">□</button>
+          <button class="win-btn close" aria-label="Close">✕</button>
         </div>
       </div>
 
@@ -484,7 +480,7 @@
           <div class="contact-terminal-card" data-copy="https://t.me/Anhelm_Never_Die">
             <div class="contact-header-row">
               <span class="contact-label text-cyan font-pixel">TELEGRAM</span>
-              <button class="contact-copy-btn" data-copy="https://t.me/Anhelm_Never_Die" aria-label="Скопировать ссылку Telegram">COPY</button>
+              <button class="contact-copy-btn" data-copy="https://t.me/Anhelm_Never_Die" aria-label="Copy Telegram link">COPY</button>
             </div>
             <a href="https://t.me/Anhelm_Never_Die" target="_blank" rel="noopener noreferrer" class="contact-val contact-link">@Anhelm_Never_Die ↗</a>
             <span class="contact-action-hint">OPEN CHANNEL // CLICK TO COPY</span>
@@ -493,7 +489,7 @@
           <div class="contact-terminal-card" data-copy="Belarus, Brest">
             <div class="contact-header-row">
               <span class="contact-label text-accent font-pixel">LOCATION</span>
-              <button class="contact-copy-btn" data-copy="Belarus, Brest" aria-label="Скопировать локацию">COPY</button>
+              <button class="contact-copy-btn" data-copy="Belarus, Brest" aria-label="Copy location">COPY</button>
             </div>
             <span class="contact-val">Brest, Belarus</span>
             <span class="contact-action-hint">HOME HARBOR // CLICK TO COPY</span>
@@ -502,7 +498,7 @@
           <div class="contact-terminal-card" data-copy="anhelm0@hotmail.com">
             <div class="contact-header-row">
               <span class="contact-label text-green font-pixel">EMAIL</span>
-              <button class="contact-copy-btn" data-copy="anhelm0@hotmail.com" aria-label="Скопировать email">COPY</button>
+              <button class="contact-copy-btn" data-copy="anhelm0@hotmail.com" aria-label="Copy email">COPY</button>
             </div>
             <a href="mailto:anhelm0@hotmail.com" class="contact-val contact-link">anhelm0@hotmail.com ↗</a>
             <span class="contact-action-hint">SEND EMAIL // CLICK TO COPY</span>
@@ -511,7 +507,7 @@
           <div class="contact-terminal-card" data-copy="anhelm#6153">
             <div class="contact-header-row">
               <span class="contact-label text-yellow font-pixel">DISCORD</span>
-              <button class="contact-copy-btn" data-copy="anhelm#6153" aria-label="Скопировать Discord ID">COPY</button>
+              <button class="contact-copy-btn" data-copy="anhelm#6153" aria-label="Copy Discord ID">COPY</button>
             </div>
             <span class="contact-val">anhelm#6153</span>
             <span class="contact-action-hint">USER ID // CLICK TO COPY</span>
@@ -531,19 +527,19 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/sound-fx.js"></script>
+  <script src="js/sound-fx.js?v=1.4"></script>
   <!-- Modular Retro Backgrounds -->
-  <script src="js/backgrounds/atari.js"></script>
-  <script src="js/backgrounds/matrix.js"></script>
-  <script src="js/backgrounds/dvd.js"></script>
-  <script src="js/backgrounds/cyberpunk.js"></script>
-  <script src="js/backgrounds/amber.js"></script>
-  <script src="js/backgrounds/win98-pipes.js"></script>
-  <script src="js/backgrounds/virtualboy.js"></script>
-  <script src="js/background-engine.js"></script>
+  <script src="js/backgrounds/atari.js?v=1.4"></script>
+  <script src="js/backgrounds/matrix.js?v=1.4"></script>
+  <script src="js/backgrounds/dvd.js?v=1.4"></script>
+  <script src="js/backgrounds/cyberpunk.js?v=1.4"></script>
+  <script src="js/backgrounds/amber.js?v=1.4"></script>
+  <script src="js/backgrounds/win98-pipes.js?v=1.4"></script>
+  <script src="js/backgrounds/virtualboy.js?v=1.4"></script>
+  <script src="js/background-engine.js?v=1.4"></script>
   <!-- App Core -->
-  <script src="js/audio-player.js"></script>
-  <script src="js/windows.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/audio-player.js?v=1.4"></script>
+  <script src="js/windows.js?v=1.4"></script>
+  <script src="js/app.js?v=1.4"></script>
 </body>
 </html>

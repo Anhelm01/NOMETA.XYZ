@@ -70,7 +70,7 @@ function initApp() {
           }, 1800);
         }
         if (liveRegion) {
-          liveRegion.textContent = `Скопировано: ${copyVal}`;
+          liveRegion.textContent = `Copied: ${copyVal}`;
           setTimeout(() => { liveRegion.textContent = ''; }, 2000);
         }
       });
