@@ -102,12 +102,7 @@ class RetroAudioPlayer {
         });
 
         this.audio.addEventListener('error', (e) => {
-          console.error('Audio load error, trying alternate path:', e);
-          // Try original filename if alias failed
-          if (!this.audio.src.includes('spaces.im.mp3')) {
-            this.audio.src = 'assets/music/MC_Ren-I_Donapost_Give_A_Damn-spaces.im.mp3';
-            this.audio.load();
-          }
+          console.error('Audio load error:', e);
         });
       }
     });
