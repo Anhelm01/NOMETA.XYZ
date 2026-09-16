@@ -152,7 +152,7 @@ window.spawnCascadingDialogs = function() {
       closeSpan.className = 'cascade-close';
       closeSpan.textContent = '✕';
       closeSpan.setAttribute('role', 'button');
-      closeSpan.setAttribute('aria-label', 'Закрыть окно');
+      closeSpan.setAttribute('aria-label', 'Close');
       closeSpan.addEventListener('click', () => dialog.remove());
       titlebar.appendChild(titleSpan);
       titlebar.appendChild(closeSpan);
@@ -187,7 +187,7 @@ window.spawnCascadingDialogs = function() {
       footer.className = 'cascade-footer';
       const okBtn = document.createElement('button');
       okBtn.className = 'cascade-btn';
-      okBtn.textContent = 'OK (Закрыть)';
+      okBtn.textContent = 'OK';
       okBtn.addEventListener('click', () => dialog.remove());
       footer.appendChild(okBtn);
 
@@ -220,6 +220,7 @@ function makeCascadeDialogDraggable(dialog) {
   });
 
   titlebar.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'touch' || isMobileDevice()) return;
     if (e.target.closest('button') || e.target.closest('.cascade-close')) return;
     isDragging = true;
     try {
@@ -285,8 +286,8 @@ function initDraggableWindows() {
     let initialTransY = 0;
 
     titlebar.addEventListener('pointerdown', (e) => {
-      // Don't drag on mobile or if window is maximized or clicking controls
-      if (isMobileDevice() || win.classList.contains('is-maximized')) return;
+      // Don't drag on mobile or touch, or if window is maximized or clicking controls
+      if (e.pointerType === 'touch' || isMobileDevice() || win.classList.contains('is-maximized')) return;
       if (e.target.closest('.win-btn') || e.target.closest('.window-icon') || e.target.closest('button') || e.target.closest('a')) {
         return;
       }
@@ -368,7 +369,7 @@ function initWindowControls() {
 
       const isMax = win.classList.toggle('is-maximized');
       btn.textContent = isMax ? '❐' : '□';
-      btn.setAttribute('aria-label', isMax ? 'Восстановить размер' : 'Развернуть на весь экран');
+      btn.setAttribute('aria-label', isMax ? 'Restore' : 'Maximize');
 
       if (isMax) {
         win.style.transform = 'none';
@@ -452,6 +453,9 @@ function initWindowControls() {
 
       topZIndex++;
       win.style.zIndex = topZIndex;
+
+      // Ensure smooth scroll to window
+      win.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 }
