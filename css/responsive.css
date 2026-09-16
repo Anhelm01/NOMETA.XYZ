@@ -1,0 +1,86 @@
+/* ==========================================================
+   RETRO-DEV-PORTFOLIO // RESPONSIVE ADAPTATIONS
+   Ensures authentic retro aesthetic scales down gracefully
+   ========================================================== */
+
+@media (max-width: 1024px) {
+  .hero-layout {
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contacts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .system-taskbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .taskbar-brand {
+    justify-content: space-between;
+  }
+
+  .taskbar-nav {
+    overflow-x: auto;
+    padding-bottom: 4px;
+    justify-content: flex-start;
+  }
+
+  .taskbar-actions {
+    justify-content: space-between;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cyber-art-wrapper {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .specs-matrix {
+    grid-template-columns: 1fr;
+  }
+
+  .player-grid-layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .player-content {
+    width: 100%;
+  }
+
+  .player-controls-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .playback-btns {
+    justify-content: center;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contacts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-main-title {
+    font-size: 18px;
+  }
+}

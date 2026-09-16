@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anhelm // Designer • Video Editor • Content Manager</title>
+  <meta name="description" content="Anhelm — Designer, Video Editor, Content Manager & Python Scripter. Brest, Belarus.">
+
+  <!-- Favicon with retro pixel disk SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect width=%2216%22 height=%2216%22 fill=%22%232563eb%22/><rect x=%223%22 y=%222%22 width=%2210%22 height=%226%22 fill=%22white%22/><rect x=%229%22 y=%223%22 width=%222%22 height=%224%22 fill=%22black%22/><rect x=%223%22 y=%2210%22 width=%2210%22 height=%225%22 fill=%22white%22/></svg>">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/crt-effects.css">
+  <link rel="stylesheet" href="css/retro-components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="theme-atari">
+
+  <!-- Silent Background Bouncing DVD Video Canvas -->
+  <canvas id="bg-dvd-canvas"></canvas>
+
+  <!-- CRT Screen Overlay (Scanlines, Vignette & Phosphor Beam) -->
+  <div class="crt-overlay">
+    <div class="crt-beam"></div>
+  </div>
+
+  <!-- Windows 98 Chaos Popups Container (Secret Easter Egg) -->
+  <div id="cascade-container"></div>
+
+  <!-- Main Audio Element (MC Ren - I Don't Give A Damn) -->
+  <audio id="main-audio-element" src="assets/music/mc-ren.mp3" preload="metadata"></audio>
+
+  <!-- Main Page Content -->
+  <div class="site-wrapper">
+
+    <!-- ========================================================
+         1. SYSTEM TOP BAR (RETRO ICONS, DROPDOWN THEMES)
+         ======================================================== -->
+    <header class="system-taskbar">
+      
+      <!-- Brand & Status (Secret trigger for popups, NO spoiler tooltip) -->
+      <div class="taskbar-brand">
+        <span class="taskbar-title font-pixel">NOMETA.XYZ</span>
+        <div class="taskbar-status-tag">
+          <span class="status-dot"></span>
+          <span>ONLINE // BREST, BY</span>
+        </div>
+      </div>
+
+      <!-- Retro Pixel Icon Navigation -->
+      <nav class="taskbar-nav">
+        <!-- Profile / User Icon -->
+        <a href="#profile" class="nav-icon-btn" aria-label="Профиль">
+          <svg viewBox="0 0 16 16">
+            <rect x="6" y="2" width="4" height="4"/>
+            <rect x="3" y="8" width="10" height="6"/>
+          </svg>
+        </a>
+
+        <!-- Audio / Boombox Icon -->
+        <a href="#player" class="nav-icon-btn" aria-label="Аудио">
+          <svg viewBox="0 0 16 16">
+            <rect x="2" y="3" width="12" height="10" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="5.5" cy="8" r="1.5"/>
+            <circle cx="10.5" cy="8" r="1.5"/>
+          </svg>
+        </a>
+
+        <!-- Projects / Folder Icon -->
+        <a href="#projects" class="nav-icon-btn" aria-label="Проекты">
+          <svg viewBox="0 0 16 16">
+            <polygon points="1,3 6,3 8,5 15,5 15,13 1,13"/>
+          </svg>
+        </a>
+
+        <!-- Contacts / Network Antenna Icon -->
+        <a href="#contacts" class="nav-icon-btn" aria-label="Контакты">
+          <svg viewBox="0 0 16 16">
+            <rect x="7" y="5" width="2" height="9"/>
+            <circle cx="8" cy="3.5" r="2.5"/>
+            <path d="M4 3a6 6 0 0 1 8 0" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </a>
+      </nav>
+
+      <!-- Taskbar Controls: Themes Dropdown & CRT Toggle -->
+      <div class="taskbar-actions">
+        <select id="theme-selector" class="retro-dropdown" aria-label="Выбор темы оформления">
+          <option value="theme-atari" selected>Atari VCS</option>
+          <option value="theme-obsidian">Obsidian Purple</option>
+          <option value="theme-green-crt">P1 Green CRT</option>
+          <option value="theme-cyberpunk">Cyberpunk 2099</option>
+          <option value="theme-amber">Monochrome Amber</option>
+          <option value="theme-win98">Win98 Teal</option>
+          <option value="theme-virtualboy">Virtual Boy Red</option>
+        </select>
+
+        <button id="btn-toggle-crt" class="taskbar-btn active">
+          <span class="btn-label">CRT: ON</span>
+        </button>
+      </div>
+
+    </header>
+
+    <!-- ========================================================
+         2. HERO WINDOW: ANHELM PROFILE (GANGSTA TOM ART)
+         ======================================================== -->
+    <section id="profile" class="retro-window">
+      <div class="window-titlebar">
+        <div class="window-title-group">
+          <!-- Pixel Floppy Disk Icon -->
+          <span class="window-icon">
+            <svg viewBox="0 0 16 16">
+              <rect width="16" height="16" fill="currentColor"/>
+              <rect x="3" y="2" width="10" height="5" fill="#0d1017"/>
+              <rect x="9" y="3" width="2" height="3" fill="currentColor"/>
+              <rect x="3" y="9" width="10" height="5" fill="#0d1017"/>
+            </svg>
+          </span>
+          <span class="window-title-text">ANHELM_PROFILE.EXE // CREATIVE_DIR</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn min" aria-label="Свернуть">_</button>
+          <button class="win-btn max" aria-label="Развернуть">□</button>
+          <button class="win-btn close" aria-label="Закрыть">✕</button>
+        </div>
+      </div>
+
+      <div class="window-menubar">
+        <span class="menu-item">File</span>
+        <span class="menu-item">Edit</span>
+        <span class="menu-item">View</span>
+        <span class="menu-item">Creative</span>
+        <span class="menu-item">Help</span>
+      </div>
+
+      <div class="window-body">
+        <div class="hero-layout">
+          
+          <!-- Left Column: Gangsta Tom Avatar Frame -->
+          <div class="hero-avatar-wrapper">
+            <div class="hero-avatar-img-box">
+              <img src="assets/images/hero-avatar.jpg" alt="Gangsta Tom on phone">
+            </div>
+            <div class="hero-avatar-bar">
+              <span class="text-muted">OPERATOR // @ANHELM</span>
+              <span class="text-accent font-pixel" style="font-size:8px;">BREST.BY</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Anhelm Identity & Creative Specs -->
+          <div class="hero-bio-column">
+            <div class="hero-tag-row">
+              <span class="tag-pill accent font-code">DESIGN & ART DIRECTION</span>
+              <span class="tag-pill green font-code">VIDEO EDITING // MOTION</span>
+              <span class="tag-pill font-code">PYTHON AUTOMATION</span>
+              <span class="tag-pill font-code">LOC: BREST, BELARUS</span>
+            </div>
+
+            <div>
+              <h1 class="hero-main-title">ANHELM</h1>
+              <div class="hero-handle font-terminal">Designer • Video Editor • Content Manager • Python Scripter</div>
+            </div>
+
+            
+
+            <!-- Specs Grid: Tailored to Design, Video, Content, Python -->
+            <div class="specs-matrix">
+              <div class="spec-item">
+                <span class="spec-label">VISUAL & DESIGN</span>
+                <span class="spec-val text-accent">Graphic Design • UI/UX • Brand Identity </span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">VIDEO & MOTION</span>
+                <span class="spec-val text-green">Dynamic Cuts • Sound Design • Reels / TikTok / YouTube • Motion</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">CONTENT & SMM</span>
+                <span class="spec-val text-cyan">Content Strategy • Media Management • Viral Formats • Visual Curation</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">PYTHON & TOOLS</span>
+                <span class="spec-val text-yellow">Telegram Bots • Web Scraping • Media Automation • Scripts & Tools</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         3. RETRO AUDIO PLAYER (MC REN - I DON'T GIVE A DAMN)
+         ======================================================== -->
+    <section id="player" class="retro-window">
+      <div class="window-titlebar">
+        <div class="window-title-group">
+          <!-- Pixel Speaker / Cassette Icon -->
+          <span class="window-icon">
+            <svg viewBox="0 0 16 16">
+              <polygon points="1,5 5,5 9,1 9,15 5,11 1,11"/>
+              <path d="M12,4 C13.5,6 13.5,10 12,12" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+          </span>
+          <span class="window-title-text">WINAMP_MINI.EXE // RUTHLESS_AUDIO_DECK</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn min" aria-label="Свернуть">_</button>
+          <button class="win-btn max" aria-label="Развернуть">□</button>
+          <button class="win-btn close" aria-label="Закрыть">✕</button>
+        </div>
+      </div>
+
+      <div class="window-body">
+        <div class="player-grid-layout">
+          
+          <!-- Album Cover: Iced Out Diamond Emoji -->
+          <div class="player-album-cover">
+            <img src="assets/images/iced-emoji.jpg" alt="Iced-out Diamond Rolex Emoji">
+            <div class="player-album-badge font-pixel">MC REN // 1993</div>
+          </div>
+
+          <!-- Controls, Visualizer & Track Info -->
+          <div class="player-content">
+            <div class="player-track-info">
+              <div class="track-meta">
+                <span id="player-track-title" class="track-title font-pixel">I DON'T GIVE A DAMN</span>
+                <span id="player-track-artist" class="track-artist font-terminal">MC REN // RUTHLESS RECORDS</span>
+              </div>
+              <div class="tag-pill accent font-terminal" style="font-size:15px;">320 KBPS • STEREO</div>
+            </div>
+
+            <!-- Frequency Visualizer Bars -->
+            <div class="visualizer-container">
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+              <div class="visualizer-bar"></div>
+            </div>
+
+            <!-- Player Controls & Timeline -->
+            <div class="player-controls-row">
+              <div class="playback-btns">
+                <button id="player-prev-btn" class="ctrl-btn" aria-label="С начала">⏮</button>
+                <button id="player-play-btn" class="ctrl-btn play" aria-label="Воспроизвести">▶</button>
+                <button id="player-next-btn" class="ctrl-btn" aria-label="Вперед на 15 секунд">⏭</button>
+              </div>
+
+              <div class="player-timeline-wrapper">
+                <div class="seek-time-labels">
+                  <span id="player-time-current">0:00</span>
+                  <span id="player-time-duration">--:--</span>
+                </div>
+                <div id="player-seek-track" class="seek-bar-track">
+                  <div id="player-seek-fill" class="seek-bar-fill"></div>
+                </div>
+              </div>
+
+              <div class="volume-control">
+                <span>VOL</span>
+                <input id="player-volume-slider" type="range" min="0" max="1" step="0.05" value="0.8" class="volume-slider" aria-label="Громкость">
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         4. PORTFOLIO SHOWCASE (2x2 GRID)
+         ======================================================== -->
+    <section id="projects" class="retro-window">
+      <div class="window-titlebar">
+        <div class="window-title-group">
+          <!-- Pixel Folder Icon -->
+          <span class="window-icon">
+            <svg viewBox="0 0 16 16">
+              <polygon points="1,2 6,2 8,4 15,4 15,14 1,14" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="window-title-text">SHOWCASE_PORTFOLIO.DIR // SELECTED_WORKS</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn min">_</button>
+          <button class="win-btn max">□</button>
+          <button class="win-btn close">✕</button>
+        </div>
+      </div>
+
+      <div class="window-menubar">
+        <span class="menu-item">Filter: [ALL]</span>
+        <span class="menu-item">[VIDEO EDIT]</span>
+        <span class="menu-item">[CONTENT]</span>
+        <span class="menu-item">[DESIGN]</span>
+        <span class="menu-item">[PYTHON]</span>
+      </div>
+
+      <div class="window-body">
+        <div class="projects-grid">
+          
+          <!-- Card 1: Squidward Org XIII (Video Editing) -->
+          <article class="project-card">
+            <div class="project-card-thumb">
+              <img src="assets/images/squidward.jpg" alt="Dynamic Video Editing Showcase">
+              <span class="project-status-badge">4K // 60 FPS</span>
+            </div>
+            <div class="project-card-body">
+              <h3 class="project-card-title">NEO_MOTION // DYNAMIC EDITS</h3>
+              <p class="project-card-desc">
+                Плотный динамичный видеомонтаж, агрессивный саунд-дизайн и выверенный ритм склеек. Видеоряд, удерживающий внимание с первой секунды.
+              </p>
+              <div class="project-tags-row">
+                <span class="project-tag">Video Editing</span>
+                <span class="project-tag">Sound Design</span>
+                <span class="project-tag">Reels / Shorts</span>
+                <span class="project-tag">After Effects</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Knight with Dobriy juice (Content Management) -->
+          <article class="project-card">
+            <div class="project-card-thumb">
+              <img src="assets/images/knight.jpg" alt="Content Management & Media">
+              <span class="project-status-badge wip">ACTIVE // SCALE</span>
+            </div>
+            <div class="project-card-body">
+              <h3 class="project-card-title">DOBRIY_MEDIA // CONTENT MANAGEMENT</h3>
+              <p class="project-card-desc">
+                Комплексная упаковка и ведение медиа-каналов: визуальный код, контент-стратегия, вовлекающий копирайтинг и рост аудитории без скуки.
+              </p>
+              <div class="project-tags-row">
+                <span class="project-tag">Content Strategy</span>
+                <span class="project-tag">SMM Management</span>
+                <span class="project-tag">Visual Direction</span>
+                <span class="project-tag">Copywriting</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: King's Field RPG Skeleton (Python Automation) -->
+          <article class="project-card">
+            <div class="project-card-thumb">
+              <img src="assets/images/retro-skeleton.jpg" alt="Python Scripting & Automation">
+              <span class="project-status-badge">STABLE // v2.0</span>
+            </div>
+            <div class="project-card-body">
+              <h3 class="project-card-title">AUTO_DISPATCHER // PY_BOTS</h3>
+              <p class="project-card-desc">
+                Кастомные скрипты на Python для автоматизации рутины: парсинг контента, мониторинг источников и Telegram-боты для автоматической публикации.
+              </p>
+              <div class="project-tags-row">
+                <span class="project-tag">Python 3</span>
+                <span class="project-tag">Telegram Bots</span>
+                <span class="project-tag">Web Scraping</span>
+                <span class="project-tag">Automation</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Pink Panther Arrested (Visual Identity & Branding) -->
+          <article class="project-card">
+            <div class="project-card-thumb">
+              <img src="assets/images/pink-panther.jpg" alt="Graphic Design & Identity">
+              <span class="project-status-badge">FEATURED // 2026</span>
+            </div>
+            <div class="project-card-body">
+              <h3 class="project-card-title">OUTLAW_VISUALS // IDENTITY & MERCH</h3>
+              <p class="project-card-desc">
+                Фирменный графический дизайн, обложки треков, мерч, постеры и брендинг в узнаваемой ретро-кибер и пост-ироничной эстетике.
+              </p>
+              <div class="project-tags-row">
+                <span class="project-tag">Graphic Design</span>
+                <span class="project-tag">Brand Identity</span>
+                <span class="project-tag">Posters & Covers</span>
+                <span class="project-tag">Photoshop / Figma</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         5. CONTACTS & TERMINAL COMMS
+         ======================================================== -->
+    <section id="contacts" class="retro-window">
+      <div class="window-titlebar">
+        <div class="window-title-group">
+          <!-- Pixel Antenna / Satellite Icon -->
+          <span class="window-icon">
+            <svg viewBox="0 0 16 16">
+              <rect x="7" y="4" width="2" height="10" fill="currentColor"/>
+              <circle cx="8" cy="3" r="2" fill="currentColor"/>
+              <path d="M4 4a6 6 0 0 1 8 0" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </span>
+          <span class="window-title-text">SOCKET_CONNECT.SYS // GET_IN_TOUCH</span>
+        </div>
+        <div class="window-controls">
+          <button class="win-btn min">_</button>
+          <button class="win-btn max">□</button>
+          <button class="win-btn close">✕</button>
+        </div>
+      </div>
+
+      <div class="window-body">
+        <div class="contacts-grid">
+          
+          <div class="contact-terminal-card" data-copy="https://t.me/Anhelm_Never_Die">
+            <span class="contact-label text-cyan font-pixel">TELEGRAM</span>
+            <span class="contact-val">@Anhelm_Never_Die</span>
+            <span class="contact-action-hint">CLICK TO COPY LINK</span>
+          </div>
+
+          <div class="contact-terminal-card" data-copy="Belarus, Brest">
+            <span class="contact-label text-accent font-pixel">LOCATION</span>
+            <span class="contact-val">Brest, Belarus</span>
+            <span class="contact-action-hint">HOME HARBOR</span>
+          </div>
+
+          <div class="contact-terminal-card" data-copy="anhelm0@hotmail.com">
+            <span class="contact-label text-green font-pixel">EMAIL</span>
+            <span class="contact-val">anhelm0@hotmail.com</span>
+            <span class="contact-action-hint">CLICK TO COPY ADDRESS</span>
+          </div>
+
+          <div class="contact-terminal-card" data-copy="anhelm#6153">
+            <span class="contact-label text-yellow font-pixel">DISCORD</span>
+            <span class="contact-val">anhelm#6153</span>
+            <span class="contact-action-hint">CLICK TO COPY ID</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         6. CLEAN RETRO FOOTER
+         ======================================================== -->
+    <footer style="margin-top: 40px; text-align: center; font-family: var(--font-terminal); font-size: 17px; color: var(--text-dim); padding-bottom: 20px;">
+      <div>© 2026 ANHELM // BREST, BELARUS • DESIGN & MEDIA</div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/sound-fx.js"></script>
+  <script src="js/dvd-screensaver.js"></script>
+  <script src="js/audio-player.js"></script>
+  <script src="js/windows.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

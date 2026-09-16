@@ -1,0 +1,112 @@
+/* ==========================================================
+   RETRO-DEV-PORTFOLIO // CRT & PHOSPHOR EFFECTS
+   Authentic CRT tube, scanlines, phosphor glow & background DVD
+   ========================================================== */
+
+/* Background Bouncing DVD Video Canvas */
+#bg-dvd-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* CRT Overlay Layer */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+/* Scanlines pattern */
+.crt-overlay::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.28) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  opacity: 0.85;
+}
+
+/* Subtle Vignette & Curvature */
+.crt-overlay::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 65%, rgba(0, 0, 0, 0.6) 100%);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.75);
+}
+
+/* Moving scan beam */
+.crt-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(168, 85, 247, 0.04) 50%,
+    rgba(255, 255, 255, 0.06) 90%,
+    transparent 100%
+  );
+  animation: crtScan 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes crtScan {
+  0% { transform: translateY(-100px); }
+  100% { transform: translateY(105vh); }
+}
+
+/* Disable CRT class */
+body.crt-disabled .crt-overlay {
+  display: none !important;
+}
+
+/* Halftone / Dither texture effect */
+.dither-overlay {
+  position: relative;
+}
+.dither-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(black 15%, transparent 16%);
+  background-size: 4px 4px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* CRT Screen Glow text & icons */
+.crt-glow-purple {
+  filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.75));
+}
+
+.crt-glow-green {
+  filter: drop-shadow(0 0 6px rgba(0, 255, 102, 0.8));
+}
+
+.crt-glow-cyan {
+  filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.8));
+}

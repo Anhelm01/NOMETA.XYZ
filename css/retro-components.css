@@ -1,0 +1,966 @@
+/* ==========================================================
+   RETRO-DEV-PORTFOLIO // RETRO COMPONENTS (NO HOVER ZOOMS)
+   Theme-adaptive CSS variables on every component.
+   Zero hover scaling / zooms / translation transforms.
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   1. SYSTEM TOP BAR
+   ---------------------------------------------------------- */
+.system-taskbar {
+  position: sticky;
+  top: 12px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-taskbar);
+  border: 1px solid var(--border-bright);
+  border-radius: 6px;
+  padding: 8px 16px;
+  margin: 12px 0 36px;
+  box-shadow: var(--window-box-shadow);
+}
+
+.taskbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.taskbar-logo-icon {
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(135deg, var(--text-accent), #6366f1);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.taskbar-title {
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+}
+
+.taskbar-status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-terminal);
+  font-size: 16px;
+  color: var(--text-green);
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 10px;
+  border-radius: 3px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--text-green);
+  box-shadow: 0 0 8px var(--text-green);
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Retro Icon Navigation Toolbar (Zero scale/hover zoom) */
+.taskbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-icon-btn {
+  width: 36px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-bright);
+  border-radius: 3px;
+  color: var(--text-muted);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1), inset -1px -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.nav-icon-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  shape-rendering: crispEdges;
+}
+
+.nav-icon-btn:hover {
+  color: var(--text-accent);
+  border-color: var(--text-accent);
+  background: var(--bg-surface-elevated);
+}
+
+.taskbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.taskbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-terminal);
+  font-size: 16px;
+  padding: 4px 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-bright);
+  color: var(--text-main);
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.08), inset -1px -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.taskbar-btn:hover {
+  background: var(--bg-surface-elevated);
+  border-color: var(--text-accent);
+}
+
+.taskbar-btn.active {
+  border-color: var(--text-accent);
+  color: var(--text-accent);
+}
+
+/* ----------------------------------------------------------
+   2. WINDOW FRAME CHROME
+   ---------------------------------------------------------- */
+.retro-window {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-bright);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--window-box-shadow);
+  margin-bottom: 38px;
+  position: relative;
+}
+
+.retro-window:hover {
+  border-color: var(--text-accent);
+}
+
+.window-titlebar {
+  background: var(--bg-window-bar);
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: grab;
+  touch-action: none;
+}
+
+.window-titlebar:active,
+body.is-window-dragging,
+body.is-window-dragging * {
+  cursor: grabbing !important;
+  user-select: none !important;
+}
+
+.window-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.window-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.window-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--text-titlebar);
+  shape-rendering: crispEdges;
+}
+
+.window-title-text {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  color: var(--text-titlebar);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.win-btn {
+  width: 20px;
+  height: 20px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-bright);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--text-main);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.2), inset -1px -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.win-btn:hover {
+  background: var(--text-accent);
+  color: #ffffff;
+}
+
+.win-btn.close:hover {
+  background: #dc2626 !important;
+  border-color: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+.window-menubar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 6px 16px;
+  background: var(--bg-menubar);
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-terminal);
+  font-size: 16px;
+  color: var(--text-dim);
+}
+
+.menu-item {
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  color: var(--text-accent);
+}
+
+.window-body {
+  padding: 28px;
+  background: var(--bg-surface);
+  color: var(--text-main);
+}
+
+/* ----------------------------------------------------------
+   3. HERO COVER: GANGSTA TOM & DEVELOPER IDENTITY
+   ---------------------------------------------------------- */
+.hero-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.hero-avatar-wrapper {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-bright);
+  background: var(--bg-well);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-avatar-img-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--bg-well);
+}
+
+.hero-avatar-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.08) brightness(1.02);
+}
+
+.hero-avatar-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--bg-menubar);
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-terminal);
+  font-size: 16px;
+}
+
+.hero-bio-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.hero-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.tag-pill {
+  font-family: var(--font-terminal);
+  font-size: 16px;
+  padding: 2px 10px;
+  border-radius: 3px;
+  border: 1px solid var(--border-bright);
+  background: var(--bg-surface-elevated);
+  color: var(--text-muted);
+}
+
+.tag-pill.accent {
+  border-color: var(--text-accent);
+  color: var(--text-accent);
+}
+
+.tag-pill.green {
+  border-color: var(--text-green);
+  color: var(--text-green);
+}
+
+.hero-main-title {
+  font-family: var(--font-pixel);
+  font-size: 26px;
+  line-height: 1.4;
+  color: var(--text-main);
+  text-shadow: 0 0 16px var(--neon-purple-glow);
+  letter-spacing: -0.5px;
+}
+
+.hero-handle {
+  font-family: var(--font-terminal);
+  font-size: 22px;
+  color: var(--text-cyan);
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.hero-lead-text {
+  font-family: var(--font-code);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-muted);
+  border-left: 3px solid var(--text-accent);
+  padding-left: 16px;
+  background: var(--bg-surface-elevated);
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.specs-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  background: var(--bg-well);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.spec-label {
+  font-family: var(--font-terminal);
+  font-size: 15px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.spec-val {
+  font-family: var(--font-code);
+  font-size: 13px;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------
+   4. RETRO AUDIO PLAYER (MC REN & ICED EMOJI ART)
+   ---------------------------------------------------------- */
+.player-grid-layout {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.player-album-cover {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-bright);
+  background: var(--bg-well);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.player-album-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.1) brightness(0.95);
+  display: block;
+}
+
+.player-album-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-menubar);
+  padding: 3px 6px;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--text-yellow);
+  text-align: center;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.player-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.player-track-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.track-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.track-title {
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  color: var(--text-main);
+  letter-spacing: 0.5px;
+}
+
+.track-artist {
+  font-family: var(--font-terminal);
+  font-size: 18px;
+  color: var(--text-accent);
+}
+
+.visualizer-container {
+  height: 40px;
+  background: var(--bg-well);
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 4px 8px;
+  gap: 3px;
+  overflow: hidden;
+}
+
+/* Frequency Bars adapting to current theme */
+.visualizer-bar {
+  flex: 1;
+  background: var(--viz-bar-gradient);
+  border-radius: 1px;
+  height: 8%;
+  transition: height 0.06s ease;
+}
+
+.player-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.playback-btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ctrl-btn {
+  width: 34px;
+  height: 34px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-bright);
+  border-radius: 3px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1), inset -1px -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.ctrl-btn:hover {
+  background: var(--bg-surface);
+  border-color: var(--text-accent);
+  color: var(--text-accent);
+}
+
+.ctrl-btn.play {
+  width: 38px;
+  height: 38px;
+  background: var(--text-accent);
+  border-color: var(--border-bright);
+  color: #ffffff;
+}
+
+.player-timeline-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.seek-time-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-terminal);
+  font-size: 15px;
+  color: var(--text-dim);
+}
+
+.seek-bar-track {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background: var(--bg-well);
+  border-radius: 3px;
+  cursor: pointer;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.seek-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: var(--seek-fill-gradient);
+  border-radius: 3px;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-terminal);
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.volume-slider {
+  width: 75px;
+  height: 5px;
+  accent-color: var(--text-accent);
+  cursor: pointer;
+}
+
+/* ----------------------------------------------------------
+   5. PROJECTS GRID (2x2) - ZERO HOVER ZOOM
+   ---------------------------------------------------------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.project-card:hover {
+  border-color: var(--text-accent);
+}
+
+.project-card-thumb {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  background: var(--bg-well);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.project-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.08) brightness(0.9);
+  display: block;
+}
+
+.project-status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  padding: 4px 8px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid var(--text-green);
+  color: var(--text-green);
+}
+
+.project-status-badge.wip {
+  border-color: var(--text-yellow);
+  color: var(--text-yellow);
+}
+
+.project-card-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.project-card-title {
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.project-card-desc {
+  font-family: var(--font-code);
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.project-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.project-tag {
+  font-family: var(--font-terminal);
+  font-size: 15px;
+  padding: 2px 8px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  color: var(--text-dim);
+}
+
+/* ----------------------------------------------------------
+   6. CONTACTS & TERMINAL LINKS - ZERO HOVER TRANSLATE
+   ---------------------------------------------------------- */
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.contact-terminal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+}
+
+.contact-terminal-card:hover {
+  border-color: var(--text-cyan);
+  background: var(--bg-surface-elevated);
+}
+
+.contact-label {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--text-dim);
+}
+
+.contact-val {
+  font-family: var(--font-code);
+  font-size: 13.5px;
+  color: var(--text-main);
+  word-break: break-all;
+}
+
+.contact-action-hint {
+  font-family: var(--font-terminal);
+  font-size: 15px;
+  color: var(--text-accent);
+  margin-top: auto;
+}
+
+/* ----------------------------------------------------------
+   7. CASCADING POPUPS CONTAINER (Theme-Adaptive Chaos)
+   ---------------------------------------------------------- */
+#cascade-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+.cascade-dialog {
+  position: fixed;
+  width: 310px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-bright);
+  box-shadow: var(--window-box-shadow);
+  pointer-events: auto;
+  font-family: var(--font-body);
+  color: var(--text-main);
+  user-select: none;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cascade-titlebar {
+  background: var(--bg-window-bar);
+  color: var(--text-titlebar);
+  padding: 6px 10px;
+  font-weight: bold;
+  font-size: 10px;
+  font-family: var(--font-pixel);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: grab;
+  touch-action: none;
+  border-bottom: 1px solid var(--border-subtle);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.cascade-titlebar:active {
+  cursor: grabbing !important;
+}
+
+.cascade-close {
+  cursor: pointer;
+  padding: 0 4px;
+  color: var(--text-titlebar);
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
+.cascade-close:hover {
+  color: #ef4444;
+}
+
+.cascade-body {
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-surface);
+  color: var(--text-main);
+}
+
+.cascade-icon-box {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cascade-text {
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--text-main);
+  font-family: var(--font-terminal);
+}
+
+.cascade-meta {
+  color: var(--text-dim);
+  font-size: 11px;
+  font-family: var(--font-terminal);
+  letter-spacing: 0.5px;
+}
+
+.cascade-footer {
+  padding: 4px 14px 12px;
+  display: flex;
+  justify-content: flex-end;
+  background: var(--bg-surface);
+}
+
+.cascade-btn {
+  background: var(--bg-surface-elevated);
+  color: var(--text-main);
+  border: 1px solid var(--border-bright);
+  padding: 4px 12px;
+  font-size: 13px;
+  font-family: var(--font-terminal);
+  cursor: pointer;
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1), inset -1px -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.cascade-btn:hover {
+  background: var(--text-accent);
+  color: #ffffff;
+  border-color: var(--text-accent);
+}
+
+.cascade-btn:active {
+  box-shadow: inset -1px -1px 0 rgba(255, 255, 255, 0.1), inset 1px 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* --- THEME-SPECIFIC POPUP OVERRIDES --- */
+
+/* 1. ATARI VCS */
+body.theme-atari .cascade-dialog {
+  border: 1px solid #9a3412;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.8), 0 0 16px rgba(239, 68, 68, 0.25);
+}
+body.theme-atari .cascade-titlebar {
+  background: linear-gradient(90deg, #b91c1c 0%, #ea580c 50%, #ca8a04 100%);
+}
+body.theme-atari .cascade-btn:hover {
+  background: #ea580c;
+  border-color: #ef4444;
+}
+
+/* 2. GREEN CRT */
+body.theme-green-crt .cascade-dialog {
+  border: 1px solid #059669;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 18px rgba(0, 255, 102, 0.25);
+}
+body.theme-green-crt .cascade-icon-box svg {
+  filter: drop-shadow(0 0 4px #00ff66) hue-rotate(85deg);
+}
+
+/* 3. CYBERPUNK 2099 */
+body.theme-cyberpunk .cascade-dialog {
+  border: 1px solid #0891b2;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 240, 255, 0.3);
+}
+body.theme-cyberpunk .cascade-titlebar {
+  background: linear-gradient(90deg, #0e7490 0%, #06b6d4 50%, #d946ef 100%);
+}
+body.theme-cyberpunk .cascade-icon-box svg {
+  filter: drop-shadow(0 0 4px #00f0ff);
+}
+
+/* 4. MONOCHROME AMBER */
+body.theme-amber .cascade-dialog {
+  border: 1px solid #b45309;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 18px rgba(245, 158, 11, 0.3);
+}
+body.theme-amber .cascade-icon-box svg {
+  filter: sepia(1) saturate(5) hue-rotate(-15deg);
+}
+
+/* 5. VIRTUAL BOY */
+body.theme-virtualboy .cascade-dialog {
+  border: 1px solid #991b1b;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 34, 34, 0.35);
+}
+body.theme-virtualboy .cascade-icon-box svg {
+  filter: grayscale(1) brightness(0.6) sepia(1) hue-rotate(-50deg) saturate(10);
+}
+
+/* 6. OBSIDIAN PURPLE */
+body.theme-obsidian .cascade-dialog {
+  border: 1px solid #3b4259;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 18px rgba(168, 85, 247, 0.3);
+}
+
+/* 7. CLASSIC WINDOWS 98 (Authentic 3D Beveled Gray) */
+body.theme-win98 .cascade-dialog {
+  background: #c0c0c0 !important;
+  color: #000000 !important;
+  border: 2px solid !important;
+  border-color: #ffffff #404040 #404040 #ffffff !important;
+  box-shadow: 3px 3px 0 #000000 !important;
+  border-radius: 0 !important;
+  font-family: 'Tahoma', 'MS Sans Serif', sans-serif !important;
+}
+
+body.theme-win98 .cascade-titlebar {
+  background: linear-gradient(90deg, #000080, #1084d0) !important;
+  color: #ffffff !important;
+  font-family: 'Tahoma', 'MS Sans Serif', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  border-bottom: none !important;
+  text-shadow: none !important;
+}
+
+body.theme-win98 .cascade-body,
+body.theme-win98 .cascade-footer {
+  background: #c0c0c0 !important;
+  color: #000000 !important;
+}
+
+body.theme-win98 .cascade-text,
+body.theme-win98 .cascade-meta {
+  color: #000000 !important;
+  font-family: 'Tahoma', 'MS Sans Serif', sans-serif !important;
+}
+
+body.theme-win98 .cascade-btn {
+  background: #c0c0c0 !important;
+  color: #000000 !important;
+  border: 2px solid !important;
+  border-color: #ffffff #404040 #404040 #ffffff !important;
+  font-family: 'Tahoma', 'MS Sans Serif', sans-serif !important;
+  font-size: 11px !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+body.theme-win98 .cascade-btn:active {
+  border-color: #404040 #ffffff #ffffff #404040 !important;
+}
+
+body.theme-win98 .cascade-icon-box svg {
+  filter: none !important;
+}
