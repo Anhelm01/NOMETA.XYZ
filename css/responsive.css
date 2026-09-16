@@ -19,11 +19,23 @@
 }
 
 @media (max-width: 768px) {
+  /* Critical mobile fix: enable native vertical touch scrolling */
+  .window-titlebar {
+    cursor: default !important;
+    touch-action: pan-y !important;
+  }
+
+  .retro-window {
+    transform: none !important;
+    margin-bottom: 24px;
+  }
+
   .system-taskbar {
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
     padding: 10px;
+    margin-bottom: 20px;
   }
 
   .taskbar-brand {
@@ -34,14 +46,21 @@
     overflow-x: auto;
     padding-bottom: 4px;
     justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
   }
 
   .taskbar-actions {
     justify-content: space-between;
+    gap: 8px;
   }
 
   .hero-layout {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .window-body {
+    padding: 16px;
   }
 
   .cyber-art-wrapper {
@@ -51,12 +70,14 @@
 
   .specs-matrix {
     grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .player-grid-layout {
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
+    gap: 16px;
   }
 
   .player-content {
@@ -74,13 +95,46 @@
 
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .contacts-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .hero-main-title {
     font-size: 18px;
+  }
+
+  /* Safe margins for cascading dialogs on small phones */
+  .cascade-dialog {
+    max-width: calc(100vw - 32px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-wrapper {
+    padding: 0 10px;
+  }
+
+  .taskbar-title {
+    font-size: 10px;
+  }
+
+  .retro-dropdown {
+    font-size: 14px;
+    padding: 4px 6px;
+  }
+
+  .taskbar-btn {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+
+  .window-menubar {
+    padding: 4px 10px;
+    gap: 10px;
+    font-size: 14px;
   }
 }

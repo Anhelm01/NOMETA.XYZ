@@ -240,21 +240,90 @@ body.is-window-dragging * {
 .window-menubar {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   padding: 6px 16px;
   background: var(--bg-menubar);
   border-bottom: 1px solid var(--border-subtle);
   font-family: var(--font-terminal);
   font-size: 16px;
   color: var(--text-dim);
+  overflow-x: auto;
 }
 
 .menu-item {
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .menu-item:hover {
   color: var(--text-accent);
+}
+
+/* Filter buttons in menubar */
+.window-menubar .filter-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  font-family: var(--font-terminal);
+  font-size: 16px;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.window-menubar .filter-btn:hover {
+  color: var(--text-accent);
+  background: rgba(168, 85, 247, 0.1);
+}
+
+.window-menubar .filter-btn.active {
+  color: var(--text-green);
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+/* Window states */
+.retro-window.is-maximized {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  z-index: 1000 !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  overflow-y: auto !important;
+}
+
+.retro-window.is-closed {
+  display: none !important;
+}
+
+/* Accessible focus states */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+[tabindex="0"]:focus-visible {
+  outline: 2px solid var(--text-accent) !important;
+  outline-offset: 2px !important;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 .window-body {
@@ -524,6 +593,7 @@ body.is-window-dragging * {
   align-items: center;
   justify-content: center;
   font-size: 13px;
+  cursor: pointer;
   box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1), inset -1px -1px 0 rgba(0, 0, 0, 0.4);
 }
 
@@ -735,6 +805,41 @@ body.is-window-dragging * {
   font-size: 15px;
   color: var(--text-accent);
   margin-top: auto;
+}
+
+.contact-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact-copy-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--text-muted);
+  padding: 2px 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.contact-copy-btn:hover {
+  background: var(--text-accent);
+  border-color: var(--text-accent);
+  color: #ffffff;
+}
+
+.contact-link {
+  text-decoration: none;
+  color: var(--text-main);
+  transition: color 0.15s ease;
+}
+
+.contact-link:hover {
+  color: var(--text-accent);
+  text-decoration: underline;
 }
 
 /* ----------------------------------------------------------
