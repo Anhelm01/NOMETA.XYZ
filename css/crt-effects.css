@@ -3,7 +3,8 @@
    Authentic CRT tube, scanlines, phosphor glow & background DVD
    ========================================================== */
 
-/* Background Bouncing DVD Video Canvas */
+/* Retro Background Canvas */
+#bg-canvas,
 #bg-dvd-canvas {
   position: fixed;
   top: 0;
