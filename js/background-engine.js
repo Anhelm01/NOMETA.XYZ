@@ -1,13 +1,10 @@
 /* ==========================================================
-   RETRO-DEV-PORTFOLIO // RETRO BACKGROUND ENGINE
-   Lightweight canvas dispatcher coordinating theme backgrounds:
-   - theme-atari: js/backgrounds/atari.js
-   - theme-green-crt: js/backgrounds/matrix.js
-   - theme-obsidian: js/backgrounds/dvd.js
-   - theme-cyberpunk: js/backgrounds/cyberpunk.js
-   - theme-amber: js/backgrounds/amber.js
-   - theme-win98: js/backgrounds/win98-pipes.js
-   - theme-virtualboy: js/backgrounds/virtualboy.js
+   RETRO-DEV-PORTFOLIO // RETRO BACKGROUND ENGINE (v2.0)
+   - High DPI / Retina support (crisp on 4K & mobile screens)
+   - Tab visibilitychange awareness (auto-pause on hidden tab)
+   - Mobile 30 FPS throttling for battery & thermal efficiency
+   - Throttled window resize with RAF
+   - System prefers-reduced-motion support
    ========================================================== */
 
 class RetroBackgroundEngine {
@@ -16,9 +13,14 @@ class RetroBackgroundEngine {
     this.ctx = null;
     this.width = 0;
     this.height = 0;
+    this.dpr = 1;
     this.animId = null;
     this.currentTheme = 'theme-atari';
     this.time = 0;
+    this.lastFrameTime = 0;
+    this.resizeRaf = null;
+    this.isPaused = false;
+    this.reducedMotion = false;
 
     this.init();
   }
@@ -29,28 +31,52 @@ class RetroBackgroundEngine {
       if (!this.canvas) return;
       this.ctx = this.canvas.getContext('2d');
 
+      // Check user motion preferences
+      const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      this.reducedMotion = motionQuery.matches;
+      motionQuery.addEventListener('change', (e) => {
+        this.reducedMotion = e.matches;
+        if (!this.reducedMotion && !this.isPaused) {
+          this.loop(performance.now());
+        }
+      });
+
       this.resize();
-      window.addEventListener('resize', () => this.resize());
+
+      // Throttled window resize
+      window.addEventListener('resize', () => {
+        if (this.resizeRaf) cancelAnimationFrame(this.resizeRaf);
+        this.resizeRaf = requestAnimationFrame(() => this.resize());
+      });
+
+      // Pause loop when browser tab is inactive to save battery and CPU
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          this.isPaused = true;
+          if (this.animId) {
+            cancelAnimationFrame(this.animId);
+            this.animId = null;
+          }
+        } else {
+          this.isPaused = false;
+          this.lastFrameTime = performance.now();
+          this.loop(this.lastFrameTime);
+        }
+      });
 
       // Read active theme from DOM
       this.currentTheme = this.detectCurrentTheme();
       this.initCurrentTheme();
 
-      // Listen for theme selector change
-      const themeSelect = document.getElementById('theme-selector');
-      if (themeSelect) {
-        themeSelect.addEventListener('change', (e) => {
-          this.setTheme(e.target.value);
-        });
-      }
-
+      // Listen for custom theme change events
       window.addEventListener('themechange', (e) => {
         if (e.detail && e.detail.theme) {
           this.setTheme(e.detail.theme);
         }
       });
 
-      this.loop();
+      this.lastFrameTime = performance.now();
+      this.loop(this.lastFrameTime);
     };
 
     if (document.readyState === 'loading') {
@@ -86,18 +112,31 @@ class RetroBackgroundEngine {
   }
 
   setTheme(newTheme) {
-    if (!newTheme) return;
+    if (!newTheme || newTheme === this.currentTheme && this.ctx) return;
     this.currentTheme = newTheme;
     if (this.ctx && this.canvas) {
       this.ctx.clearRect(0, 0, this.width, this.height);
     }
     this.initCurrentTheme();
+    if (this.reducedMotion && this.ctx) {
+      const bg = this.getActiveBackground();
+      if (bg && typeof bg.render === 'function') {
+        bg.render(this.ctx, this.width, this.height, this.time);
+      }
+    }
   }
 
   resize() {
-    if (!this.canvas) return;
-    this.width = this.canvas.width = window.innerWidth;
-    this.height = this.canvas.height = window.innerHeight;
+    if (!this.canvas || !this.ctx) return;
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+
+    // Retina HiDPI scale (capped at 2 for performance)
+    this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+    this.canvas.width = Math.floor(this.width * this.dpr);
+    this.canvas.height = Math.floor(this.height * this.dpr);
+    this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+
     const bg = this.getActiveBackground();
     if (bg) {
       if (typeof bg.resize === 'function') {
@@ -108,14 +147,31 @@ class RetroBackgroundEngine {
     }
   }
 
-  loop = () => {
-    this.time += 0.02;
-    if (this.ctx && this.canvas) {
-      const bg = this.getActiveBackground();
-      if (bg && typeof bg.render === 'function') {
-        bg.render(this.ctx, this.width, this.height, this.time);
+  loop = (now = performance.now()) => {
+    if (this.isPaused) return;
+
+    // On mobile devices (<=768px), throttle canvas to ~30 FPS to prevent battery drain
+    const isMobile = this.width <= 768;
+    const targetInterval = isMobile ? 32 : 16; // ~30 FPS on mobile, ~60 FPS on desktop
+    const elapsed = now - this.lastFrameTime;
+
+    if (elapsed >= targetInterval) {
+      this.lastFrameTime = now - (elapsed % targetInterval);
+      this.time += 0.02;
+
+      if (this.ctx && this.canvas) {
+        const bg = this.getActiveBackground();
+        if (bg && typeof bg.render === 'function') {
+          bg.render(this.ctx, this.width, this.height, this.time);
+        }
       }
     }
+
+    // If reduced motion is requested, render one still frame and stop
+    if (this.reducedMotion) {
+      return;
+    }
+
     this.animId = requestAnimationFrame(this.loop);
   };
 }
