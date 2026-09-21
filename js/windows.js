@@ -241,10 +241,8 @@ function makeCascadeDialogDraggable(dialog) {
     if (!isDragging) return;
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
-    const newLeft = Math.max(10, Math.min(window.innerWidth - 80, initLeft + dx));
-    const newTop = Math.max(10, Math.min(window.innerHeight - 60, initTop + dy));
-    dialog.style.left = `${newLeft}px`;
-    dialog.style.top = `${newTop}px`;
+    dialog.style.left = `${initLeft + dx}px`;
+    dialog.style.top = `${initTop + dy}px`;
   });
 
   const stop = (e) => {
@@ -311,23 +309,12 @@ function initDraggableWindows() {
       if (!isDragging) return;
       const dx = e.clientX - startX;
       const dy = e.clientY - startY;
-
-      // Clamping so window titlebar never leaves viewport
       const currentX = initialTransX + dx;
       const currentY = initialTransY + dy;
 
-      const rect = win.getBoundingClientRect();
-      const minX = -rect.left + 20;
-      const maxX = window.innerWidth - rect.right - 20;
-      const minY = -rect.top + 10;
-      const maxY = window.innerHeight - rect.top - 40;
-
-      const clampedX = Math.max(minX, Math.min(maxX, currentX));
-      const clampedY = Math.max(minY, Math.min(maxY, currentY));
-
-      win.style.transform = `translate(${clampedX}px, ${clampedY}px)`;
-      win.setAttribute('data-trans-x', clampedX);
-      win.setAttribute('data-trans-y', clampedY);
+      win.style.transform = `translate(${currentX}px, ${currentY}px)`;
+      win.setAttribute('data-trans-x', currentX);
+      win.setAttribute('data-trans-y', currentY);
     });
 
     const stopDrag = (e) => {
@@ -453,6 +440,16 @@ function initWindowControls() {
 
       topZIndex++;
       win.style.zIndex = topZIndex;
+
+      // If dragged completely outside the viewport, reset position so it's visible
+      const rect = win.getBoundingClientRect();
+      if (rect.right < 0 || rect.left > window.innerWidth || rect.bottom < 0 || rect.top > window.innerHeight) {
+        win.style.transition = 'transform 0.25s ease';
+        win.style.transform = 'translate(0px, 0px)';
+        win.setAttribute('data-trans-x', '0');
+        win.setAttribute('data-trans-y', '0');
+        setTimeout(() => { win.style.transition = ''; }, 250);
+      }
 
       // Ensure smooth scroll to window
       win.scrollIntoView({ behavior: 'smooth', block: 'start' });
