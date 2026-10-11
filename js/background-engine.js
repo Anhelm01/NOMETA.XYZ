@@ -15,7 +15,7 @@ class RetroBackgroundEngine {
     this.height = 0;
     this.dpr = 1;
     this.animId = null;
-    this.currentTheme = 'theme-atari';
+    this.currentTheme = 'theme-cobalt';
     this.time = 0;
     this.lastFrameTime = 0;
     this.resizeRaf = null;
@@ -88,20 +88,17 @@ class RetroBackgroundEngine {
 
   detectCurrentTheme() {
     const cl = document.body.className || '';
+    if (cl.includes('theme-crimson')) return 'theme-crimson';
+    if (cl.includes('theme-cobalt')) return 'theme-cobalt';
     if (cl.includes('theme-green-crt')) return 'theme-green-crt';
-    if (cl.includes('theme-atari')) return 'theme-atari';
-    if (cl.includes('theme-cyberpunk')) return 'theme-cyberpunk';
     if (cl.includes('theme-amber')) return 'theme-amber';
-    if (cl.includes('theme-win98')) return 'theme-win98';
-    if (cl.includes('theme-virtualboy')) return 'theme-virtualboy';
-    if (cl.includes('theme-obsidian')) return 'theme-obsidian';
-    const sel = document.getElementById('theme-selector');
-    return (sel && sel.value) ? sel.value : 'theme-atari';
+    if (cl.includes('theme-cyberpunk')) return 'theme-cyberpunk';
+    return 'theme-crimson';
   }
 
   getActiveBackground() {
     const registry = window.RetroBackgrounds || {};
-    return registry[this.currentTheme] || registry['theme-atari'] || null;
+    return registry[this.currentTheme] || registry['theme-cobalt'] || registry['theme-atari'] || null;
   }
 
   initCurrentTheme() {

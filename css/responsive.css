@@ -1,16 +1,21 @@
 /* ==========================================================
-   RETRO-DEV-PORTFOLIO // RESPONSIVE ADAPTATIONS
-   Ensures authentic retro aesthetic scales down gracefully
+   ANHELM // RESPONSIVE ADAPTATIONS (TILING CYBER-DECK)
+   Smooth scaling from 4K ultra-wide down to mobile touchscreens
    ========================================================== */
 
 @media (max-width: 1024px) {
-  .hero-layout {
-    grid-template-columns: 300px 1fr;
+  .dashboard-grid {
+    grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .hero-layout {
+    grid-template-columns: 200px 1fr;
+    gap: 16px;
+  }
+
+  .project-card {
+    grid-template-columns: 280px 1fr;
   }
 
   .contacts-grid {
@@ -27,7 +32,7 @@
 
   .retro-window {
     transform: none !important;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
   .system-taskbar {
@@ -35,7 +40,7 @@
     align-items: stretch;
     gap: 10px;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   .taskbar-brand {
@@ -54,17 +59,18 @@
     gap: 8px;
   }
 
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
   .hero-layout {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
 
-  .window-body {
-    padding: 16px;
-  }
-
-  .cyber-art-wrapper {
-    max-width: 320px;
+  .hero-avatar-wrapper {
+    max-width: 260px;
     margin: 0 auto;
   }
 
@@ -73,11 +79,16 @@
     gap: 8px;
   }
 
+  .world-clock-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
   .player-grid-layout {
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
-    gap: 16px;
+    gap: 14px;
   }
 
   .player-content {
@@ -86,40 +97,40 @@
 
   .player-controls-row {
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
 
   .playback-btns {
     justify-content: center;
   }
 
-  .projects-grid {
+  .project-card {
     grid-template-columns: 1fr;
-    gap: 16px;
+  }
+
+  .project-card-thumb {
+    min-height: 200px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .contacts-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
   }
 
   .hero-main-title {
-    font-size: 18px;
-  }
-
-  /* Safe margins for cascading dialogs on small phones */
-  .cascade-dialog {
-    max-width: calc(100vw - 32px) !important;
+    font-size: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .site-wrapper {
-    padding: 0 10px;
+    padding: 0 8px 3rem;
   }
 
   .taskbar-title {
-    font-size: 10px;
+    font-size: 9.5px;
   }
 
   .retro-dropdown {
@@ -136,5 +147,18 @@
     padding: 4px 10px;
     gap: 10px;
     font-size: 14px;
+    overflow-x: auto;
+  }
+
+  .clock-digital-time {
+    font-size: 28px;
+  }
+
+  .project-card-body {
+    padding: 12px 14px;
+  }
+
+  .project-card-title {
+    font-size: 11px;
   }
 }

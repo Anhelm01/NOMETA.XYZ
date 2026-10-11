@@ -1,321 +1,222 @@
 /* ==========================================================
-   RETRO-DEV-PORTFOLIO // MAIN STYLESHEET (COMPREHENSIVE THEMES)
-   Deep per-theme customization: Win98, Obsidian, CRT, Atari,
-   Cyberpunk, Amber, Virtual Boy. Zero hover zooms.
+   ANHELM // RETRO CYBER-DECK STYLESHEET (STEALTH GRAPHITE)
+   Industrial console workstation aesthetic:
+   - Clean dark titanium & graphite window frames
+   - Zero oversaturated blue bars
+   - Razor-sharp 1px hairlines
+   - Authentic console monospace typography
    ========================================================== */
 
-:root {
-  /* 1. Theme: Obsidian Purple (Default) */
-  --bg-primary: #07080b;
-  --bg-wallpaper: radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.08) 0%, transparent 60%),
-                  linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-  --bg-taskbar: rgba(11, 13, 18, 0.92);
-  --bg-surface: #121520;
-  --bg-surface-elevated: #181c2b;
-  --bg-card: #0c0e14;
-  --bg-well: #08090d;
-  --bg-window-bar: linear-gradient(90deg, #1c1335 0%, #2f1754 50%, #151829 100%);
-  --bg-menubar: #0b0e14;
+:root,
+body,
+body.theme-crimson {
+  /* Sole Unified Theme: Gloom Obsidian-Crimson NERV Terminal */
+  --bg-primary: #040103;
+  --bg-wallpaper: transparent;
+  --bg-taskbar: rgba(14, 5, 8, 0.94);
+  --bg-surface: rgba(12, 4, 7, 0.90);
+  --bg-surface-elevated: #16060c;
+  --bg-card: rgba(8, 2, 4, 0.93);
+  --bg-well: #040102;
+  --bg-window-bar: #16070c;
   
-  --text-main: #e2e8f0;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
-  --text-accent: #a855f7;
-  --text-green: #10b981;
-  --text-cyan: #06b6d4;
-  --text-yellow: #eab308;
+  --text-main: #fde8ec;
+  --text-muted: #fda4af;
+  --text-dim: #9f1239;
+  --text-accent: #f43f5e;
+  --text-green: #22c55e;
+  --text-cyan: #fda4af;
+  --text-yellow: #f59e0b;
   --text-red: #ef4444;
-  --text-titlebar: #ffffff;
+  --text-titlebar: #fecdd3;
 
-  --border-subtle: #242938;
-  --border-bright: #3b4259;
-  --border-card: #1f2433;
-  --window-box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+  --border-subtle: #240a12;
+  --border-bright: #3d101e;
+  --border-card: #2c0c16;
+  --window-border: #280b14;
+  --window-border-highlight: #4c1d2c;
+  --window-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85);
 
-  --neon-purple: #a855f7;
-  --neon-purple-glow: rgba(168, 85, 247, 0.45);
-  --neon-cyan: #00f0ff;
+  --neon-accent: #f43f5e;
+  --neon-accent-glow: rgba(244, 63, 94, 0.25);
+  --neon-cyan: #fda4af;
 
-  --viz-bar-gradient: linear-gradient(0deg, #10b981 0%, #06b6d4 60%, #a855f7 100%);
-  --seek-fill-gradient: linear-gradient(90deg, #6366f1, #a855f7);
+  --viz-bar-gradient: linear-gradient(0deg, #22c55e 0%, #f59e0b 50%, #f43f5e 100%);
+  --seek-fill-gradient: linear-gradient(90deg, #be123c, #f43f5e);
 
-  --font-pixel: 'Press Start 2P', monospace;
+  --font-console: 'Share Tech Mono', 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  --font-pixel: 'Share Tech Mono', 'IBM Plex Mono', 'JetBrains Mono', monospace;
   --font-terminal: 'VT323', monospace;
-  --font-code: 'JetBrains Mono', 'Space Mono', monospace;
-  --font-body: 'Space Mono', monospace;
+  --font-code: 'JetBrains Mono', monospace;
+  --font-body: 'IBM Plex Mono', 'JetBrains Mono', monospace;
 }
 
-/* 2. Theme: Green CRT Phosphor (Matrix Terminal) */
+/* 2. Theme: Crimson Blood-Wine Terminal */
+body.theme-crimson {
+  --bg-primary: #060204;
+  --bg-wallpaper: radial-gradient(circle at 50% 0%, rgba(159, 18, 57, 0.12) 0%, transparent 70%),
+                  linear-gradient(rgba(244, 63, 94, 0.015) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(244, 63, 94, 0.015) 1px, transparent 1px);
+  --bg-taskbar: rgba(14, 5, 8, 0.96);
+  --bg-surface: #0c0306;
+  --bg-surface-elevated: #16060c;
+  --bg-card: #080204;
+  --bg-well: #040102;
+  --bg-window-bar: #16070c;
+  
+  --text-main: #fde8ec;
+  --text-muted: #fda4af;
+  --text-dim: #9f1239;
+  --text-accent: #f43f5e;
+  --text-green: #22c55e;
+  --text-cyan: #fda4af;
+  --text-yellow: #f59e0b;
+  --text-red: #ef4444;
+  --text-titlebar: #fecdd3;
+
+  --border-subtle: #240a12;
+  --border-bright: #3d101e;
+  --border-card: #2c0c16;
+  --window-border: #280b14;
+  --window-border-highlight: #4c1d2c;
+  --window-box-shadow: none;
+
+  --neon-accent: #f43f5e;
+  --neon-accent-glow: rgba(244, 63, 94, 0.25);
+  --neon-cyan: #fda4af;
+
+  --viz-bar-gradient: linear-gradient(0deg, #22c55e 0%, #f59e0b 50%, #f43f5e 100%);
+  --seek-fill-gradient: linear-gradient(90deg, #be123c, #f43f5e);
+}
+
+/* 3. Theme: Green CRT Phosphor */
 body.theme-green-crt {
-  --bg-primary: #020b05;
-  --bg-wallpaper: radial-gradient(circle at 50% 0%, rgba(0, 255, 102, 0.06) 0%, transparent 60%),
-                  linear-gradient(rgba(0, 255, 102, 0.03) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(0, 255, 102, 0.03) 1px, transparent 1px);
-  --bg-taskbar: rgba(5, 20, 10, 0.94);
-  --bg-surface: #06180c;
-  --bg-surface-elevated: #092312;
-  --bg-card: #041208;
-  --bg-well: #020a04;
-  --bg-window-bar: linear-gradient(90deg, #052e16 0%, #064e3b 100%);
-  --bg-menubar: #031006;
+  --bg-primary: #020804;
+  --bg-wallpaper: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 70%),
+                  linear-gradient(rgba(0, 255, 102, 0.015) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(0, 255, 102, 0.015) 1px, transparent 1px);
+  --bg-taskbar: rgba(4, 14, 7, 0.96);
+  --bg-surface: #041007;
+  --bg-surface-elevated: #071c0c;
+  --bg-card: #030c05;
+  --bg-well: #010602;
+  --bg-window-bar: #081a0e;
   
   --text-main: #34d399;
   --text-muted: #10b981;
-  --text-dim: #059669;
+  --text-dim: #065f46;
   --text-accent: #00ff66;
   --text-green: #00ff66;
   --text-cyan: #6ee7b7;
   --text-yellow: #a7f3d0;
-  --text-titlebar: #ffffff;
+  --text-red: #f87171;
+  --text-titlebar: #a7f3d0;
 
-  --border-subtle: #064e3b;
-  --border-bright: #059669;
-  --border-card: #065f46;
-  --window-box-shadow: 0 20px 48px rgba(0, 0, 0, 0.8), 0 0 16px rgba(0, 255, 102, 0.15);
+  --border-subtle: #082411;
+  --border-bright: #0d3d1d;
+  --border-card: #0a2d15;
+  --window-border: #0b2b14;
+  --window-border-highlight: #10b981;
+  --window-box-shadow: none;
 
-  --neon-purple: #00ff66;
-  --neon-purple-glow: rgba(0, 255, 102, 0.45);
+  --neon-accent: #00ff66;
+  --neon-accent-glow: rgba(0, 255, 102, 0.25);
+  --neon-cyan: #6ee7b7;
 
   --viz-bar-gradient: linear-gradient(0deg, #047857 0%, #10b981 55%, #00ff66 100%);
   --seek-fill-gradient: linear-gradient(90deg, #059669, #00ff66);
 }
 
-/* 3. Theme: Atari VCS Arcade */
-body.theme-atari {
-  --bg-primary: #0a0a0a;
-  --bg-wallpaper: radial-gradient(circle at 50% 0%, rgba(239, 68, 68, 0.08) 0%, transparent 60%),
-                  linear-gradient(rgba(234, 88, 12, 0.02) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(234, 88, 12, 0.02) 1px, transparent 1px);
-  --bg-taskbar: rgba(20, 16, 14, 0.94);
-  --bg-surface: #1a1412;
-  --bg-surface-elevated: #261c18;
-  --bg-card: #130e0c;
-  --bg-well: #0a0706;
-  --bg-window-bar: linear-gradient(90deg, #b91c1c 0%, #ea580c 50%, #ca8a04 100%);
-  --bg-menubar: #0f0a09;
-  
-  --text-main: #fef08a;
-  --text-muted: #fdba74;
-  --text-dim: #f97316;
-  --text-accent: #ef4444;
-  --text-green: #facc15;
-  --text-cyan: #fb923c;
-  --text-yellow: #fde047;
-  --text-titlebar: #ffffff;
-
-  --border-subtle: #451a03;
-  --border-bright: #9a3412;
-  --border-card: #7c2d12;
-  --window-box-shadow: 0 20px 48px rgba(0, 0, 0, 0.8), 0 0 16px rgba(239, 68, 68, 0.2);
-
-  --neon-purple: #ef4444;
-  --neon-purple-glow: rgba(239, 68, 68, 0.5);
-
-  --viz-bar-gradient: linear-gradient(0deg, #ca8a04 0%, #ea580c 50%, #ef4444 100%);
-  --seek-fill-gradient: linear-gradient(90deg, #ea580c, #ef4444);
-}
-
-/* 4. Theme: Cyberpunk 2099 */
-body.theme-cyberpunk {
-  --bg-primary: #050814;
-  --bg-wallpaper: radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
-                  linear-gradient(rgba(0, 240, 255, 0.02) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(217, 70, 239, 0.02) 1px, transparent 1px);
-  --bg-taskbar: rgba(10, 16, 36, 0.94);
-  --bg-surface: #0e1733;
-  --bg-surface-elevated: #15224d;
-  --bg-card: #090e21;
-  --bg-well: #040712;
-  --bg-window-bar: linear-gradient(90deg, #0e7490 0%, #06b6d4 50%, #d946ef 100%);
-  --bg-menubar: #060a18;
-  
-  --text-main: #e0f2fe;
-  --text-muted: #7dd3fc;
-  --text-dim: #38bdf8;
-  --text-accent: #00f0ff;
-  --text-green: #34d399;
-  --text-cyan: #00f0ff;
-  --text-yellow: #f472b6;
-  --text-titlebar: #ffffff;
-
-  --border-subtle: #164e63;
-  --border-bright: #0891b2;
-  --border-card: #0e7490;
-  --window-box-shadow: 0 20px 48px rgba(0, 0, 0, 0.8), 0 0 18px rgba(0, 240, 255, 0.2);
-
-  --neon-purple: #00f0ff;
-  --neon-purple-glow: rgba(0, 240, 255, 0.5);
-
-  --viz-bar-gradient: linear-gradient(0deg, #00f0ff 0%, #38bdf8 50%, #f43f5e 100%);
-  --seek-fill-gradient: linear-gradient(90deg, #06b6d4, #d946ef);
-}
-
-/* 5. Theme: Monochrome Amber */
+/* 4. Theme: Monochrome Amber */
 body.theme-amber {
-  --bg-primary: #0a0602;
-  --bg-wallpaper: radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
-                  linear-gradient(rgba(245, 158, 11, 0.02) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(245, 158, 11, 0.02) 1px, transparent 1px);
-  --bg-taskbar: rgba(22, 14, 6, 0.94);
-  --bg-surface: #1e1307;
-  --bg-surface-elevated: #2c1b09;
-  --bg-card: #140c04;
-  --bg-well: #090502;
-  --bg-window-bar: linear-gradient(90deg, #78350f 0%, #b45309 100%);
-  --bg-menubar: #100a03;
+  --bg-primary: #070401;
+  --bg-wallpaper: radial-gradient(circle at 50% 0%, rgba(217, 119, 6, 0.1) 0%, transparent 70%),
+                  linear-gradient(rgba(245, 158, 11, 0.015) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(245, 158, 11, 0.015) 1px, transparent 1px);
+  --bg-taskbar: rgba(16, 9, 3, 0.96);
+  --bg-surface: #100903;
+  --bg-surface-elevated: #1c1005;
+  --bg-card: #0b0602;
+  --bg-well: #050301;
+  --bg-window-bar: #180d04;
   
   --text-main: #fef3c7;
   --text-muted: #fde68a;
-  --text-dim: #f59e0b;
+  --text-dim: #92400e;
   --text-accent: #f59e0b;
   --text-green: #fbbf24;
   --text-cyan: #fcd34d;
   --text-yellow: #f59e0b;
-  --text-titlebar: #ffffff;
+  --text-red: #ef4444;
+  --text-titlebar: #fde68a;
 
-  --border-subtle: #451a03;
-  --border-bright: #b45309;
-  --border-card: #78350f;
-  --window-box-shadow: 0 20px 48px rgba(0, 0, 0, 0.8), 0 0 16px rgba(245, 158, 11, 0.2);
+  --border-subtle: #241304;
+  --border-bright: #3d2008;
+  --border-card: #2c1705;
+  --window-border: #281504;
+  --window-border-highlight: #d97706;
+  --window-box-shadow: none;
 
-  --neon-purple: #f59e0b;
-  --neon-purple-glow: rgba(245, 158, 11, 0.5);
+  --neon-accent: #f59e0b;
+  --neon-accent-glow: rgba(245, 158, 11, 0.25);
+  --neon-cyan: #fcd34d;
 
   --viz-bar-gradient: linear-gradient(0deg, #78350f 0%, #d97706 60%, #fbbf24 100%);
   --seek-fill-gradient: linear-gradient(90deg, #b45309, #f59e0b);
 }
 
-/* 6. Theme: Classic Windows 98 (Authentic Teal Desktop & Silver Windows) */
-body.theme-win98 {
-  --bg-primary: #008080;
-  --bg-wallpaper: none;
-  --bg-taskbar: #c0c0c0;
-  --bg-surface: #c0c0c0;
-  --bg-surface-elevated: #d4d0c8;
-  --bg-card: #d4d0c8;
-  --bg-well: #ffffff;
-  --bg-window-bar: linear-gradient(90deg, #000080 0%, #1084d0 100%);
-  --bg-menubar: #c0c0c0;
+/* 5. Theme: Cyberpunk Neon */
+body.theme-cyberpunk {
+  --bg-primary: #03050c;
+  --bg-wallpaper: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.1) 0%, transparent 70%),
+                  linear-gradient(rgba(0, 240, 255, 0.015) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(217, 70, 239, 0.015) 1px, transparent 1px);
+  --bg-taskbar: rgba(6, 10, 22, 0.96);
+  --bg-surface: #050917;
+  --bg-surface-elevated: #0a1128;
+  --bg-card: #040712;
+  --bg-well: #020309;
+  --bg-window-bar: #091225;
   
-  --text-main: #000000;
-  --text-muted: #222222;
-  --text-dim: #444444;
-  --text-accent: #000080;
-  --text-green: #006600;
-  --text-cyan: #004080;
-  --text-yellow: #804000;
-  --text-titlebar: #ffffff;
+  --text-main: #e0f2fe;
+  --text-muted: #7dd3fc;
+  --text-dim: #0369a1;
+  --text-accent: #00f0ff;
+  --text-green: #34d399;
+  --text-cyan: #00f0ff;
+  --text-yellow: #f472b6;
+  --text-red: #ef4444;
+  --text-titlebar: #bae6fd;
 
-  --border-subtle: #808080;
-  --border-bright: #ffffff;
-  --border-card: #808080;
-  --window-box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+  --border-subtle: #0d1a33;
+  --border-bright: #142952;
+  --border-card: #102142;
+  --window-border: #0f1e3c;
+  --window-border-highlight: #00f0ff;
+  --window-box-shadow: none;
 
-  --neon-purple: #000080;
-  --neon-purple-glow: rgba(0, 0, 128, 0.2);
+  --neon-accent: #00f0ff;
+  --neon-accent-glow: rgba(0, 240, 255, 0.25);
+  --neon-cyan: #00f0ff;
 
-  --viz-bar-gradient: linear-gradient(0deg, #008000 0%, #00cc00 60%, #ffcc00 85%, #ff0000 100%);
-  --seek-fill-gradient: linear-gradient(90deg, #000080, #1084d0);
+  --viz-bar-gradient: linear-gradient(0deg, #00f0ff 0%, #38bdf8 50%, #f43f5e 100%);
+  --seek-fill-gradient: linear-gradient(90deg, #06b6d4, #d946ef);
 }
 
-/* Special Windows 98 Authentic Overrides */
-body.theme-win98 .retro-window,
-body.theme-win98 .system-taskbar,
-body.theme-win98 .hero-avatar-wrapper,
-body.theme-win98 .project-card,
-body.theme-win98 .contact-terminal-card,
-body.theme-win98 .player-album-cover {
-  border: 2px solid !important;
-  border-color: #ffffff #404040 #404040 #ffffff !important;
-  box-shadow: 2px 2px 0 #000000 !important;
-}
+/* ==========================================================
+   RESET & SYSTEM BASE
+   ========================================================== */
 
-body.theme-win98 .specs-matrix,
-body.theme-win98 .visualizer-container,
-body.theme-win98 .seek-bar-track,
-body.theme-win98 .project-card-thumb,
-body.theme-win98 .hero-avatar-img-box {
-  border: 2px solid !important;
-  border-color: #404040 #ffffff #ffffff #404040 !important;
-}
-
-body.theme-win98 .nav-icon-btn,
-body.theme-win98 .taskbar-btn,
-body.theme-win98 .retro-dropdown,
-body.theme-win98 .ctrl-btn,
-body.theme-win98 .win-btn {
-  background: #c0c0c0 !important;
-  color: #000000 !important;
-  border: 2px solid !important;
-  border-color: #ffffff #404040 #404040 #ffffff !important;
-}
-
-body.theme-win98 .taskbar-title,
-body.theme-win98 .taskbar-status-tag,
-body.theme-win98 .hero-main-title,
-body.theme-win98 .track-title,
-body.theme-win98 .project-card-title,
-body.theme-win98 .contact-val {
-  color: #000000 !important;
-  text-shadow: none !important;
-}
-
-body.theme-win98 .tag-pill {
-  background: #e0e0e0 !important;
-  border: 1px solid #808080 !important;
-  color: #000080 !important;
-}
-
-body.theme-win98 .hero-lead-text {
-  background: #e8e8e8 !important;
-  border-left-color: #000080 !important;
-  color: #111111 !important;
-}
-
-/* 7. Theme: Virtual Boy Blood Red */
-body.theme-virtualboy {
-  --bg-primary: #000000;
-  --bg-wallpaper: none;
-  --bg-taskbar: rgba(20, 0, 0, 0.95);
-  --bg-surface: #140000;
-  --bg-surface-elevated: #220000;
-  --bg-card: #0f0000;
-  --bg-well: #080000;
-  --bg-window-bar: linear-gradient(90deg, #450a0a 0%, #7f1d1d 100%);
-  --bg-menubar: #0a0000;
-  
-  --text-main: #fecaca;
-  --text-muted: #f87171;
-  --text-dim: #dc2626;
-  --text-accent: #ff2222;
-  --text-green: #f87171;
-  --text-cyan: #ef4444;
-  --text-yellow: #fca5a5;
-  --text-titlebar: #ffffff;
-
-  --border-subtle: #450a0a;
-  --border-bright: #991b1b;
-  --border-card: #7f1d1d;
-  --window-box-shadow: 0 20px 48px rgba(0, 0, 0, 0.9), 0 0 18px rgba(255, 34, 34, 0.25);
-
-  --neon-purple: #ff2222;
-  --neon-purple-glow: rgba(255, 34, 34, 0.6);
-
-  --viz-bar-gradient: linear-gradient(0deg, #450a0a 0%, #dc2626 60%, #ff2222 100%);
-  --seek-fill-gradient: linear-gradient(90deg, #7f1d1d, #ff2222);
-}
-
-/* Global Reset and Layout */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border-radius: 0 !important;
 }
 
 html {
   scroll-behavior: smooth;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 body {
@@ -325,15 +226,15 @@ body {
   background-position: 0 0, -1px -1px, -1px -1px;
   color: var(--text-main);
   font-family: var(--font-body);
-  line-height: 1.6;
+  line-height: 1.5;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
 }
 
 ::selection {
-  background: var(--neon-purple);
+  background: var(--border-bright);
   color: #ffffff;
 }
 
@@ -349,38 +250,39 @@ button, select {
   background: none;
 }
 
-/* Retro Select Dropdown */
+/* Minimalist Console Select Dropdown */
 .retro-dropdown {
   background: var(--bg-surface);
   color: var(--text-main);
   border: 1px solid var(--border-bright);
-  border-radius: 3px;
-  font-family: var(--font-terminal);
-  font-size: 16px;
-  padding: 4px 8px;
+  font-family: var(--font-console);
+  font-size: 11.5px;
+  padding: 2px 6px;
   outline: none;
   cursor: pointer;
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1), inset -1px -1px 0 rgba(0, 0, 0, 0.5);
 }
 
-.retro-dropdown:hover {
-  border-color: var(--neon-purple);
+.retro-dropdown:hover,
+.retro-dropdown:focus {
+  border-color: var(--window-border-highlight);
 }
 
 .retro-dropdown option {
-  background: var(--bg-surface);
+  background: var(--bg-surface-elevated);
   color: var(--text-main);
-  padding: 6px;
+  padding: 4px;
 }
 
 /* Typography Helpers */
-.font-pixel { font-family: var(--font-pixel); }
+.font-console { font-family: var(--font-console); }
+.font-pixel { font-family: var(--font-console); }
 .font-terminal { font-family: var(--font-terminal); }
 .font-code { font-family: var(--font-code); }
 .text-accent { color: var(--text-accent); }
 .text-green { color: var(--text-green); }
 .text-cyan { color: var(--text-cyan); }
 .text-yellow { color: var(--text-yellow); }
+.text-red { color: var(--text-red); }
 .text-muted { color: var(--text-muted); }
 
 /* Main Container */
@@ -388,17 +290,17 @@ button, select {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 1.5rem 5rem;
+  padding: 0 1rem 3rem;
   position: relative;
   z-index: 10;
 }
 
-/* Custom Scrollbar */
+/* Custom Minimalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -407,9 +309,44 @@ button, select {
 
 ::-webkit-scrollbar-thumb {
   background: var(--border-bright);
-  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--neon-purple);
+  background: var(--window-border-highlight);
 }
+
+/* ==========================================================
+   AMBIENT BACKGROUND VIDEO & GLOOM OVERLAY
+   ========================================================== */
+.site-bg-video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  background: #040103;
+  pointer-events: none;
+}
+
+#site-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.90;
+  filter: contrast(1.05) brightness(0.96) saturate(1.05);
+  transition: opacity 0.5s ease;
+}
+
+.site-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(4, 1, 3, 0.0) 0%, rgba(4, 1, 3, 0.35) 100%),
+              linear-gradient(180deg, rgba(4, 1, 3, 0.25) 0%, rgba(4, 1, 3, 0.0) 50%, rgba(4, 1, 3, 0.35) 100%);
+  pointer-events: none;
+}
+
