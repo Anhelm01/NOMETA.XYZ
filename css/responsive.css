@@ -108,6 +108,10 @@
     grid-template-columns: 1fr;
   }
 
+  .bridge-features-grid {
+    grid-template-columns: 1fr;
+  }
+
   .project-card-thumb {
     min-height: 200px;
     border-right: none;
